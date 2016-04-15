@@ -1,0 +1,43 @@
+<ion-view view-title="">
+  </ion-header-bar>
+    <ion-nav-buttons side="left">
+      <button class="button button-clear icon-left ion-minus-circled" ng-click="data.shouldShowDelete = !data.shouldShowDelete"></button>
+      <button class="button button-clear icon-left ion-plus-circled" ng-click="addTask()"></button>
+    </ion-nav-buttons>
+   <ion-nav-bar class="bar grey">
+    <ion-nav-buttons side="right">
+       <button class="button button-clear icon-right" ng-click="data.showReordering = !data.showReordering">Reorder</button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="">
+    <!-- can-swipe="data.canSwipe" -->
+    <ion-list class="list" show-reorder="data.showReordering" show-delete="data.shouldShowDelete">
+      <ion-item ng-repeat="task in updateTasksList() track by $index" class="item icon-left" on-swipe-right="completeTask(task, $index)" on-double-tap="editTask($index)">
+       {{task.name}}
+        <ion-reorder-button class="ion-navicon" on-reorder="reorderItem(task, $fromIndex, $toIndex)"></ion-reorder-button>
+        <ion-delete-button class="ion-minus-circled" ng-click="removeTask($index)"></ion-delete-button>
+      </ion-item>
+    </ion-list>
+    <ion-list class="list item-crossed" show-delete="data.shouldShowDelete">
+      <ion-item ng-repeat="task in updateCompletedTasksList() track by $index" class="item icon-left item-crossed">
+        {{task.name}}
+        <ion-delete-button class="ion-minus-circled" ng-click="removeCompletedTask($index)"></ion-delete-button>
+      </ion-item>
+    </ion-list>
+    <button class="button button-clear icon-right">{{emailMessage}}</button>
+  </ion-content>
+  <ion-footer-bar class="">
+    <a href="#/settings" class="button button-clear icon-right ion-ios-gear"></a>
+    <h1 class="title grey">{{firstname}} {{lastname}}</h1>
+    <button class="button button-clear icon-right ion-paper-airplane" ng-click="sendEmail()"></button>
+    <!-- <button class="button button-clear icon-right ion-android-textsms" ng-click="sendText()"></button> -->
+    <button class="button button-clear icon-right ion-plus-circled" ng-click="addTask()"></button>
+  </ion-footer-bar>
+</ion-view>
+
+<!-- store in firebase -->
+
+<!-- add list-avatar pictures for each exercise later -->
+<!-- fix input number in build.html and fix the color of nav-bar in tab-account.html -->
+
+<!-- consider moving mail and sms button to nav bar -->

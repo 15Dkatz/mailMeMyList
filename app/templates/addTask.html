@@ -1,0 +1,37 @@
+<ion-view view-title="">
+  </ion-nav-bar>
+  <ion-nav-bar class="bar grey">
+
+    <ion-nav-buttons side="left">
+      <a href="#/tasks" class="button button-clear ion-android-home"></a>
+    </ion-nav-buttons>
+
+  </ion-nav-bar>
+  <ion-content class="">
+      <div class="list">
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper" ng-keypress="addTaskByEnter($event, taskText)">
+            <input type="text" placeholder="I have to" ng-model="taskText" >
+          </label>
+          <!-- button-small? -->
+          <button class="button button-small button-clear icon-right ion-plus-circled" ng-click="addTask(taskText)" ></button>
+        </div>
+      </div>
+
+      <!-- add click outside of this section to go home functionality -->
+      <!-- <a ng-href="#/tasks"> -->
+        <!-- <div class="item"> -->
+      <!-- a -->
+        <!-- </div> -->
+      <!-- </a> -->
+  </ion-content>
+  <ion-footer-bar class="">
+    <h1 class="title grey"></h1>
+    <button class="button button-clear icon-right ion-plus-circled" ng-click="addTask(taskText)"></button>
+  </ion-footer-bar>
+
+<!-- Footer... -->
+<!-- {{firstname}} {{lastname}} -->
+
+
+</ion-view>
